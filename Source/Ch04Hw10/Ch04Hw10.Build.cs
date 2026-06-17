@@ -14,7 +14,8 @@ public class Ch04Hw10 : ModuleRules
 			"Engine", 
 			"InputCore", 
 			"EnhancedInput",
-			"Test"
+			"Test", //부 모듈을 메인모듈에 추가
+			"Temporary", //플러그인을 Primary모듈에 추가
 		
 		}
 		);

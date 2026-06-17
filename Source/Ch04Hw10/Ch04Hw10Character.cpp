@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Test/TestActor.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -53,6 +54,23 @@ ACh04Hw10Character::ACh04Hw10Character()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	DataClass = UCharacterData::StaticClass(); //기본 클래스 지정
+}
+
+void ACh04Hw10Character::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (IsValid(DataClass))
+	{
+		CharacterData = NewObject<UCharacterData>(this, DataClass);
+	}
+
+	UKismetSystemLibrary::PrintString(this,FString::Printf(TEXT("직업 : %s"), *CharacterData->Name));
+	UKismetSystemLibrary::PrintString(this,FString::Printf(TEXT("체력 : %.1f"), CharacterData->HP));
+	UKismetSystemLibrary::PrintString(this,FString::Printf(TEXT("레벨 : %d"), CharacterData->Level));
+
 }
 
 //////////////////////////////////////////////////////////////////////////

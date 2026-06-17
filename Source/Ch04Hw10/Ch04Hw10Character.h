@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "Temporary/Data/CharacterData.h"
 #include "Ch04Hw10Character.generated.h"
 
 class USpringArmComponent;
@@ -51,6 +52,7 @@ class ACh04Hw10Character : public ACharacter
 public:
 	ACh04Hw10Character();
 	
+	virtual void BeginPlay() override;
 
 protected:
 
@@ -80,5 +82,16 @@ protected:
 		//Test모듈에 있는 Test class 가져오기
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSubclassOf<AActor> TestActorClass;
+
+#pragma region Temporary Plugins
+
+public:
+		//에디터에서 선택할 클래스
+	UPROPERTY(EditAnywhere, Category = "CharacterData")
+	TSubclassOf<UCharacterData> DataClass;
+
+		//Temporary Plugins의 캐릭터 데이터클래스 인스턴스를 가져옴
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "CharacterData")
+	UCharacterData* CharacterData;
 };
 
