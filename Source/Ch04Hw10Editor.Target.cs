@@ -11,5 +11,6 @@ public class Ch04Hw10EditorTarget : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
 		ExtraModuleNames.Add("Ch04Hw10");
-	}
+        ExtraModuleNames.Add("Test"); //에디터에서도 런타임 빌드 될수 있도록 함
+    }
 }

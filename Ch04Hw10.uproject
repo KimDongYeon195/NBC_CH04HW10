@@ -5,6 +5,14 @@
 	"Description": "",
 	"Modules": [
 		{
+			"Name": "Test",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"AdditionalDependencies": ["Engine"]
+
+		},
+		
+		{
 			"Name": "Ch04Hw10",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"

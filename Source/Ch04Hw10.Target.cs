@@ -11,5 +11,7 @@ public class Ch04Hw10Target : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
 		ExtraModuleNames.Add("Ch04Hw10");
-	}
+		ExtraModuleNames.Add("Test"); //Test 모듈이 빌드될 수있게함.
+
+    }
 }

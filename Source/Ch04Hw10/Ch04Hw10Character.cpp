@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Test/TestActor.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -85,6 +86,9 @@ void ACh04Hw10Character::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ACh04Hw10Character::Look);
+	
+		//SpawnTestActor
+		EnhancedInputComponent->BindAction(SpawnActor, ETriggerEvent::Started, this, & ThisClass::SpawnTestActor);
 	}
 	else
 	{
@@ -126,4 +130,14 @@ void ACh04Hw10Character::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ACh04Hw10Character::SpawnTestActor(const FInputActionValue& Value)
+{
+	if (IsValid(TestActorClass))
+	{
+		FVector SpawnedLocation = (GetActorLocation() + GetActorForwardVector() * 300.f);
+		ATestActor* TestActor = GetWorld()->SpawnActor<ATestActor>(TestActorClass, SpawnedLocation, FRotator::ZeroRotator);
+	}
+	UE_LOG(LogTemp, Log, TEXT("Spawned TestActor"))
 }
